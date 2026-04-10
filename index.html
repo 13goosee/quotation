@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>服務報價說明</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F8F4EE;
+    --warm-white: #FDFAF6;
+    --ink: #1A1510;
+    --ink-light: #5A5248;
+    --ink-muted: #9A928A;
+    --accent: #C4954A;
+    --accent-light: #E8D5B0;
+    --border: #E2D8CC;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .container {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  header {
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  .tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--warm-white);
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 12px 8px;
+    font-size: 13px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 400;
+    color: var(--ink-muted);
+    background: transparent;
+    border: none;
+    border-right: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .tab-btn:last-child { border-right: none; }
+
+  .tab-btn.active {
+    background: var(--ink);
+    color: var(--warm-white);
+    font-weight: 500;
+  }
+
+  .pane { display: none; animation: fadeIn 0.25s ease; }
+  .pane.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .pane-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.25rem;
+  }
+
+  .pane-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .pane-hours {
+    font-size: 12px;
+    color: var(--ink-muted);
+    background: var(--accent-light);
+    color: #8B6020;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .item {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+  }
+
+  .item-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .item-hour {
+    font-size: 12px;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    margin-left: 12px;
+  }
+
+  .item-desc {
+    font-size: 12px;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+
+  .total-section {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+
+  .total-row:last-child { border-bottom: none; }
+
+  .total-row .name { color: var(--ink-light); }
+  .total-row .val { font-weight: 500; }
+
+  .total-final {
+    background: var(--ink);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .total-final .name {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+  }
+
+  .total-final .price {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .note {
+    font-size: 12px;
+    color: var(--ink-muted);
+    line-height: 1.8;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--warm-white);
+  }
+
+  .note::before {
+    content: '備註　';
+    font-weight: 500;
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <p class="label">服務報價</p>
+    <h1>工作內容與費用說明</h1>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="show('robot', this)">自動化機器人</button>
+    <button class="tab-btn" onclick="show('recruit', this)">招募顧問</button>
+    <button class="tab-btn" onclick="show('total', this)">費用總覽</button>
+  </div>
+
+  <div id="pane-robot" class="pane active">
+    <div class="pane-header">
+      <p class="pane-title">自動化上架機器人</p>
+      <span class="pane-hours">16 小時</span>
+    </div>
+    <div class="item">
+      <div class="item-top">
+        <span class="item-name">了解現況 & 爬梳需求</span>
+        <span class="item-hour">2 小時</span>
+      </div>
+      <p class="item-desc">了解目前上架流程、痛點與需求，整理出自動化的目標與範圍。</p>
+    </div>
+    <div class="item">
+      <div class="item-top">
+        <span class="item-name">撰寫邏輯 SOP 範本</span>
+        <span class="item-hour">3 小時</span>
+      </div>
+      <p class="item-desc">將上架流程標準化，建立可重複執行的操作邏輯文件。</p>
+    </div>
+    <div class="item">
+      <div class="item-top">
+        <span class="item-name">程式邏輯流程設計</span>
+        <span class="item-hour">4 小時</span>
+      </div>
+      <p class="item-desc">根據 SOP 設計自動化的程式架構與執行流程。AI 協作軟體實作。</p>
+    </div>
+    <div class="item">
+      <div class="item-top">
+        <span class="item-name">工作流程設計</span>
+        <span class="item-hour">1 小時</span>
+      </div>
+      <p class="item-desc">將程式邏輯整合進實際工作情境，確保符合使用習慣。</p>
+    </div>
+    <div class="item">
+      <div class="item-top">
+        <span class="item-name">Bug 移除與測試</span>
+        <span class="item-hour">4 小時</span>
+      </div>
+      <p class="item-desc">實際測試執行結果，修正問題，確保穩定運作。</p>
+    </div>
+  </div>
+
+  <div id="pane-recruit" class="pane">
+    <div class="pane-header">
+      <p class="pane-title">招募顧問服務</p>
+      <span class="pane-hours">20 小時（規劃中）</span>
+    </div>
+    <div class="item">
+      <div class="item-top">
+        <span class="item-name">需求訪談 & 職務需求文件撰寫</span>
+        <span class="item-hour">3 小時</span>
+      </div>
+      <p class="item-desc">確認職缺需求、釐清職能優先順序，重新撰寫符合實際需求的職缺描述。</p>
+    </div>
+    <div class="item">
+      <div class="item-top">
+        <span class="item-name">平台上架設定</span>
+        <span class="item-hour">1 小時</span>
+      </div>
+      <p class="item-desc">選擇合適的招募平台並完成職缺上架與設定。</p>
+    </div>
+    <div class="item">
+      <div class="item-top">
+        <span class="item-name">履歷篩選</span>
+        <span class="item-hour">3 小時</span>
+      </div>
+      <p class="item-desc">依據職缺需求篩選應徵者履歷，整理合適名單。</p>
+    </div>
+    <div class="item">
+      <div class="item-top">
+        <span class="item-name">初篩面試</span>
+        <span class="item-hour">12 小時</span>
+      </div>
+      <p class="item-desc">安排並執行初步面試，評估候選人，整理面試報告供參考。</p>
+    </div>
+    <div class="item">
+      <div class="item-top">
+        <span class="item-name">流程收尾 & 交接</span>
+        <span class="item-hour">3 小時</span>
+      </div>
+      <p class="item-desc">協助安排最終面試、確認錄取人選，完成整個招募流程。</p>
+    </div>
+  </div>
+
+  <div id="pane-total" class="pane">
+    <div class="pane-header">
+      <p class="pane-title">費用總覽</p>
+    </div>
+    <div class="total-section">
+      <div class="total-row">
+        <span class="name">自動化上架機器人</span>
+        <span class="val">16 小時</span>
+      </div>
+      <div class="total-row">
+        <span class="name">招募顧問服務</span>
+        <span class="val">20 小時</span>
+      </div>
+      <div class="total-row">
+        <span class="name">實際合計</span>
+        <span class="val">36 小時 × NT$1,000</span>
+      </div>
+    </div>
+    <div class="total-final">
+      <span class="name">本月費用（優惠）</span>
+      <span class="price">NT$30,000</span>
+    </div>
+    <br>
+    <div class="note">招募服務時間為預估，過程中如有調整會提前說明。</div>
+  </div>
+</div>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('pane-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
