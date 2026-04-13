@@ -229,6 +229,109 @@
   .total-row.subtotal {
     background: rgba(226, 216, 204, 0.35);
   }
+
+  .total-row .name .name-title {
+    display: block;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .total-row .name .name-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin-top: 3px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  .reference {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 1rem;
+    overflow: hidden;
+  }
+
+  .reference summary {
+    padding: 0.9rem 1.1rem;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-light);
+    list-style: none;
+    user-select: none;
+  }
+
+  .reference summary::-webkit-details-marker { display: none; }
+
+  .reference summary::after {
+    content: '▾';
+    float: right;
+    color: var(--ink-muted);
+  }
+
+  .reference[open] summary::after {
+    content: '▴';
+  }
+
+  .reference-body {
+    padding: 0.25rem 1.1rem 1.1rem;
+    font-size: 12px;
+    color: var(--ink-light);
+    line-height: 1.8;
+    border-top: 1px solid var(--border);
+  }
+
+  .reference-body h4 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    color: var(--ink);
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+
+  .reference-body ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.3rem 0 0.5rem;
+  }
+
+  .reference-body ul li {
+    padding: 2px 0;
+    color: var(--ink-light);
+  }
+
+  .reference-body ul li::before {
+    content: '・';
+    color: var(--accent);
+    margin-right: 4px;
+  }
+
+  .reference-body p {
+    margin: 0.3rem 0;
+  }
+
+  .reference-body a {
+    display: inline-block;
+    margin-top: 0.3rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .reference-body a:hover {
+    text-decoration: underline;
+  }
+
+  .reference-body .reference-note {
+    margin-top: 0.85rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--border);
+    color: var(--ink-muted);
+    font-size: 11px;
+  }
 </style>
 </head>
 <body>
@@ -247,40 +350,34 @@
   <div id="pane-robot" class="pane active">
     <div class="pane-header">
       <p class="pane-title">自動化上架機器人</p>
-      <span class="pane-hours">16 小時</span>
     </div>
     <div class="item">
       <div class="item-top">
         <span class="item-name">了解現況 & 爬梳需求</span>
-        <span class="item-hour">2 小時</span>
       </div>
       <p class="item-desc">了解目前上架流程、痛點與需求，整理出自動化的目標與範圍。</p>
     </div>
     <div class="item">
       <div class="item-top">
         <span class="item-name">撰寫邏輯 SOP 範本</span>
-        <span class="item-hour">3 小時</span>
       </div>
       <p class="item-desc">將上架流程標準化，建立可重複執行的操作邏輯文件。</p>
     </div>
     <div class="item">
       <div class="item-top">
         <span class="item-name">程式邏輯流程設計</span>
-        <span class="item-hour">4 小時</span>
       </div>
       <p class="item-desc">根據 SOP 設計自動化的程式架構與執行流程。AI 協作軟體實作。</p>
     </div>
     <div class="item">
       <div class="item-top">
         <span class="item-name">工作流程設計</span>
-        <span class="item-hour">1 小時</span>
       </div>
       <p class="item-desc">將程式邏輯整合進實際工作情境，確保符合使用習慣。</p>
     </div>
     <div class="item">
       <div class="item-top">
         <span class="item-name">Bug 移除與測試</span>
-        <span class="item-hour">4 小時</span>
       </div>
       <p class="item-desc">實際測試執行結果，修正問題，確保穩定運作。</p>
     </div>
@@ -289,40 +386,34 @@
   <div id="pane-recruit" class="pane">
     <div class="pane-header">
       <p class="pane-title">招募顧問服務</p>
-      <span class="pane-hours">20 小時（規劃中）</span>
     </div>
     <div class="item">
       <div class="item-top">
         <span class="item-name">需求訪談 & 職務需求文件撰寫</span>
-        <span class="item-hour">3 小時</span>
       </div>
       <p class="item-desc">確認職缺需求、釐清職能優先順序，重新撰寫符合實際需求的職缺描述。</p>
     </div>
     <div class="item">
       <div class="item-top">
         <span class="item-name">平台上架設定</span>
-        <span class="item-hour">1 小時</span>
       </div>
       <p class="item-desc">選擇合適的招募平台並完成職缺上架與設定。</p>
     </div>
     <div class="item">
       <div class="item-top">
         <span class="item-name">履歷篩選</span>
-        <span class="item-hour">3 小時</span>
       </div>
       <p class="item-desc">依據職缺需求篩選應徵者履歷，整理合適名單。</p>
     </div>
     <div class="item">
       <div class="item-top">
         <span class="item-name">初篩面試</span>
-        <span class="item-hour">12 小時</span>
       </div>
       <p class="item-desc">安排並執行初步面試，評估候選人，整理面試報告供參考。</p>
     </div>
     <div class="item">
       <div class="item-top">
         <span class="item-name">流程收尾 & 交接</span>
-        <span class="item-hour">3 小時</span>
       </div>
       <p class="item-desc">協助安排最終面試、確認錄取人選，完成整個招募流程。</p>
     </div>
@@ -334,12 +425,18 @@
     </div>
     <div class="total-section">
       <div class="total-row">
-        <span class="name">自動化上架機器人建置</span>
-        <span class="val"><span class="market">NT$50,000</span>NT$32,000</span>
+        <span class="name">
+          <span class="name-title">自動化上架機器人建置</span>
+          <span class="name-sub">參考 Tasker 外包行情</span>
+        </span>
+        <span class="val">NT$32,000</span>
       </div>
       <div class="total-row">
-        <span class="name">招募顧問服務</span>
-        <span class="val"><span class="market">NT$40,000</span>NT$28,000</span>
+        <span class="name">
+          <span class="name-title">招募顧問服務</span>
+          <span class="name-sub">參考獵才公司費率</span>
+        </span>
+        <span class="val">NT$28,000</span>
       </div>
       <div class="total-row subtotal">
         <span class="name">小計</span>
@@ -356,6 +453,32 @@
     </div>
     <br>
     <div class="note">自動化機器人含交付後 30 天 bug 修正，功能擴充或範圍外需求將另行討論報價。招募服務時間為預估，過程中如有調整會提前說明。</div>
+
+    <details class="reference">
+      <summary>📊 行情參考（2026 公開資料）</summary>
+      <div class="reference-body">
+        <h4>自動化機器人類服務</h4>
+        <p>台灣外包接案平台 Tasker 官方 2026 行情總覽：</p>
+        <ul>
+          <li>軟體程式設計　NT$5,000 起 / 案</li>
+          <li>爬蟲程式開發　NT$5,000 起 / 案</li>
+          <li>AI 自動化服務　NT$10,000 起 / 案</li>
+          <li>聊天機器人開發　NT$15,000 起 / 案</li>
+          <li>全端系統開發　NT$30,000 起 / 案</li>
+          <li>ERP 系統開發　NT$50,000 起 / 案</li>
+        </ul>
+        <p><a href="https://www.tasker.com.tw/price" target="_blank" rel="noopener">→ Tasker 2026 服務行情總覽</a></p>
+
+        <h4>招募顧問類服務</h4>
+        <p>台灣主要獵才公司（104 獵才、藝珂 Adecco、萬寶華 ManpowerGroup）採成功報酬制：</p>
+        <ul>
+          <li>抽成比例　年薪 20%–30%</li>
+          <li>範例　年薪 40 萬職缺 → 約 NT$80,000–120,000</li>
+          <li>保證期通常 90 天</li>
+        </ul>
+        <p class="reference-note">註：招募顧問服務不在 Tasker 等主流外包平台的 50 個類別中，故以獵才公司公開費率為主要參考基準。</p>
+      </div>
+    </details>
   </div>
 </div>
 
