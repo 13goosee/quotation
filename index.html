@@ -332,6 +332,117 @@
     color: var(--ink-muted);
     font-size: 11px;
   }
+
+  .pane-status {
+    font-size: 11px;
+    color: #8B6020;
+    margin-top: -0.5rem;
+    margin-bottom: 1.1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .pane-status::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  .pane-status.pending::before {
+    background: var(--ink-muted);
+  }
+
+  .completion-note {
+    margin-top: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(226, 216, 204, 0.3);
+    border-left: 2px solid var(--accent);
+    font-size: 11px;
+    color: var(--ink-light);
+    line-height: 1.7;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .completion-note strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .terms {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 1rem;
+    overflow: hidden;
+  }
+
+  .terms summary {
+    padding: 0.9rem 1.1rem;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    list-style: none;
+    user-select: none;
+  }
+
+  .terms summary::-webkit-details-marker { display: none; }
+
+  .terms summary::after {
+    content: '▾';
+    float: right;
+    color: var(--ink-muted);
+  }
+
+  .terms[open] summary::after {
+    content: '▴';
+  }
+
+  .terms-body {
+    padding: 0.25rem 1.1rem 1.1rem;
+    font-size: 12px;
+    color: var(--ink-light);
+    line-height: 1.8;
+    border-top: 1px solid var(--border);
+  }
+
+  .terms-body h4 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    color: var(--ink);
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+
+  .terms-body ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.3rem 0 0.5rem;
+  }
+
+  .terms-body ul li {
+    padding: 3px 0;
+    color: var(--ink-light);
+    padding-left: 1.1em;
+    position: relative;
+  }
+
+  .terms-body ul li::before {
+    content: '・';
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+  }
+
+  .terms-body strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
@@ -351,6 +462,7 @@
     <div class="pane-header">
       <p class="pane-title">自動化上架機器人</p>
     </div>
+    <p class="pane-status">系統已部署於辦公室，員工操作中</p>
     <div class="item">
       <div class="item-top">
         <span class="item-name">了解現況 & 爬梳需求</span>
@@ -387,6 +499,7 @@
     <div class="pane-header">
       <p class="pane-title">招募顧問服務</p>
     </div>
+    <p class="pane-status pending">FLOMI 行銷人員｜職缺需求待與舅媽確認後啟動</p>
     <div class="item">
       <div class="item-top">
         <span class="item-name">需求訪談 & 職務需求文件撰寫</span>
@@ -417,6 +530,9 @@
       </div>
       <p class="item-desc">協助安排最終面試、確認錄取人選，完成整個招募流程。</p>
     </div>
+    <div class="completion-note">
+      <strong>完成標準：</strong>送達 3 位以上合格候選人至面試階段即為服務完成。後續若需協助第二階段面試、薪資談判或試用期追蹤，為延伸服務另議。
+    </div>
   </div>
 
   <div id="pane-total" class="pane">
@@ -426,15 +542,15 @@
     <div class="total-section">
       <div class="total-row">
         <span class="name">
-          <span class="name-title">自動化上架機器人建置</span>
-          <span class="name-sub">參考 Tasker 外包行情</span>
+          <span class="name-title">自動化上架機器人</span>
+          <span class="name-sub">已部署．含 90 天支援保固</span>
         </span>
         <span class="val">NT$32,000</span>
       </div>
       <div class="total-row">
         <span class="name">
           <span class="name-title">招募顧問服務</span>
-          <span class="name-sub">參考獵才公司費率</span>
+          <span class="name-sub">每職缺家人價．第二個起另議</span>
         </span>
         <span class="val">NT$28,000</span>
       </div>
@@ -452,7 +568,40 @@
       <span class="price">NT$48,000</span>
     </div>
     <br>
-    <div class="note">自動化機器人含交付後 30 天 bug 修正，功能擴充或範圍外需求將另行討論報價。招募服務時間為預估，過程中如有調整會提前說明。</div>
+    <div class="note">自動化機器人已於舅媽辦公室部署運作中。本次合作將過去建置與未來 90 天技術支援一次確立，讓後續維護與改版有清楚依據。</div>
+
+    <details class="terms" open>
+      <summary>📋 合作條款</summary>
+      <div class="terms-body">
+        <h4>付款方式</h4>
+        <ul>
+          <li><strong>自動化機器人 NT$32,000</strong>　合約確認後 7 日內一次結清</li>
+          <li><strong>招募顧問 NT$28,000</strong>　啟動時預收 NT$14,000（50%）、候選人送達面試階段結清 NT$14,000（50%）</li>
+          <li><strong>舅舅首次合作特別價 −NT$12,000</strong>　於尾款階段扣除</li>
+        </ul>
+
+        <h4>自動化機器人服務範圍</h4>
+        <ul>
+          <li>含交付後 <strong>90 天支援保固</strong>：bug 修正、Cyberbiz 改版對應、基本使用諮詢</li>
+          <li>保固期後若需持續技術支援，另議年度維護合約</li>
+          <li>舅媽公司擁有系統自用權；程式碼著作權保留於 Dennis 工作室，不得轉售或提供第三方使用</li>
+        </ul>
+
+        <h4>招募顧問服務範圍</h4>
+        <ul>
+          <li><strong>完成標準</strong>　送達 3 位以上合格候選人至面試階段即為服務完成</li>
+          <li><strong>延伸服務（另議）</strong>　第二階段面試協助、薪資談判、試用期追蹤</li>
+          <li><strong>人數計價</strong>　本報價為首個職缺家人價；若同時招募多職缺，第二個起每職缺另議</li>
+          <li>平台刊登費用（CakeResume / Yourator 等）由舅媽公司負擔</li>
+        </ul>
+
+        <h4>範圍變更與中止</h4>
+        <ul>
+          <li>若合作過程中有新增功能、新增職缺或變更規格，以書面（LINE / Email 皆可）確認新增預算為準</li>
+          <li>招募服務若中途暫停，以已完成階段結算；已收預付款不退還</li>
+        </ul>
+      </div>
+    </details>
 
     <details class="reference">
       <summary>📊 行情參考（2026 公開資料）</summary>
