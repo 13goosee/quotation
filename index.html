@@ -212,6 +212,23 @@
     font-weight: 500;
     color: var(--accent);
   }
+
+  .market {
+    color: var(--ink-muted);
+    text-decoration: line-through;
+    font-weight: 400;
+    margin-right: 10px;
+    font-size: 12px;
+  }
+
+  .total-row.discount .name,
+  .total-row.discount .val {
+    color: var(--accent);
+  }
+
+  .total-row.subtotal {
+    background: rgba(226, 216, 204, 0.35);
+  }
 </style>
 </head>
 <body>
@@ -317,24 +334,28 @@
     </div>
     <div class="total-section">
       <div class="total-row">
-        <span class="name">自動化上架機器人</span>
-        <span class="val">16 小時</span>
+        <span class="name">自動化上架機器人建置</span>
+        <span class="val"><span class="market">NT$50,000</span>NT$32,000</span>
       </div>
       <div class="total-row">
         <span class="name">招募顧問服務</span>
-        <span class="val">20 小時</span>
+        <span class="val"><span class="market">NT$40,000</span>NT$28,000</span>
       </div>
-      <div class="total-row">
-        <span class="name">實際合計</span>
-        <span class="val">36 小時 × NT$1,000</span>
+      <div class="total-row subtotal">
+        <span class="name">小計</span>
+        <span class="val">NT$60,000</span>
+      </div>
+      <div class="total-row discount">
+        <span class="name">舅舅首次合作特別價</span>
+        <span class="val">-NT$12,000</span>
       </div>
     </div>
     <div class="total-final">
-      <span class="name">本月費用（優惠）</span>
-      <span class="price">NT$30,000</span>
+      <span class="name">本次合作費用</span>
+      <span class="price">NT$48,000</span>
     </div>
     <br>
-    <div class="note">招募服務時間為預估，過程中如有調整會提前說明。</div>
+    <div class="note">自動化機器人含交付後 30 天 bug 修正，功能擴充或範圍外需求將另行討論報價。招募服務時間為預估，過程中如有調整會提前說明。</div>
   </div>
 </div>
 
